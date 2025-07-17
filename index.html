@@ -1,0 +1,899 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DGlink - La puissance du numérique entre vos mains</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+        #inscription-message {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #fef3c7;
+            color: #78350f;
+            border: 1px solid #facc15;
+            padding: 20px 30px;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            font-size: 16px;
+            z-index: 9999;
+            display: none;
+            animation: fadeIn 0.5s ease;
+            text-align: center;
+            max-width: 90%;
+            width: 400px;
+        }
+
+        #inscription-message a {
+            color: #2563eb;
+            text-decoration: underline;
+            font-weight: 500;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translate(-50%, -60%); }
+            to { opacity: 1; transform: translate(-50%, -50%); }
+        }
+        
+        :root {
+            --primary: #2563eb;
+            --secondary: #1e40af;
+            --accent: #3b82f6;
+            --dark: #1e293b;
+            --light: #f8fafc;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            scroll-behavior: smooth;
+        }
+        
+        .hero-gradient {
+            background: linear-gradient(135deg, rgba(37, 99, 235, 0.9) 0%, rgba(30, 64, 175, 0.9) 100%);
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        
+        .animate-float {
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        .animate-float-delay {
+            animation: float 6s ease-in-out infinite 2s;
+        }
+        
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        .fade-in {
+            animation: fadeIn 1s ease-in;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        .nav-link {
+            position: relative;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -2px;
+            left: 0;
+            background-color: white;
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        .testimonial-card {
+            transition: all 0.3s ease;
+        }
+        
+        .testimonial-card:hover {
+            transform: scale(1.05);
+        }
+        
+        .product-card:hover .product-overlay {
+            opacity: 1;
+        }
+        
+        .product-overlay {
+            transition: opacity 0.3s ease;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Navigation -->
+    <nav class="fixed w-full bg-white shadow-md z-50 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <a href="#" class="flex-shrink-0 flex items-center">
+                        <img src="logo1.png" alt="DGlink Logo" class="h-10 w-10">
+                        <span class="ml-3 text-xl font-semibold text-gray-900">DGLINK</span>
+                    </a>
+                </div>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#home" class="nav-link text-gray-900 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium">Accueil</a>
+                    <a href="#about" class="nav-link text-gray-900 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium">À propos</a>
+                    <a href="#services" class="nav-link text-gray-900 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium">Services</a>
+                    <a href="#formations" class="nav-link text-gray-900 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium">Formations</a>
+                    <a href="#boutique" class="nav-link text-gray-900 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium">Boutique</a>
+                    <a href="#contact" class="nav-link text-gray-900 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium">Contact</a>
+                </div>
+                <div class="hidden md:flex items-center">
+                    <a href="#contact" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md text-sm font-medium transition duration-300">Demandez un devis</a>
+                </div>
+                <div class="-mr-2 flex md:hidden">
+                    <button type="button" id="mobile-menu-button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-700 hover:text-gray-900 hover:bg-gray-100 focus:outline-none">
+                        <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Mobile menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white shadow-lg">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="#home" class="block px-3 py-2 rounded-md text-base font-medium text-gray-900 hover:text-blue-600 hover:bg-gray-50">Accueil</a>
+                <a href="#about" class="block px-3 py-2 rounded-md text-base font-medium text-gray-900 hover:text-blue-600 hover:bg-gray-50">À propos</a>
+                <a href="#services" class="block px-3 py-2 rounded-md text-base font-medium text-gray-900 hover:text-blue-600 hover:bg-gray-50">Services</a>
+                <a href="#formations" class="block px-3 py-2 rounded-md text-base font-medium text-gray-900 hover:text-blue-600 hover:bg-gray-50">Formations</a>
+                <a href="#boutique" class="block px-3 py-2 rounded-md text-base font-medium text-gray-900 hover:text-blue-600 hover:bg-gray-50">Boutique</a>
+                <a href="#contact" class="block px-3 py-2 rounded-md text-base font-medium text-gray-900 hover:text-blue-600 hover:bg-gray-50">Contact</a>
+                <a href="#contact" class="block w-full text-center bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md text-sm font-medium mt-2">Demandez un devis</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="pt-24 pb-16 md:pt-32 md:pb-24 hero-gradient text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-10 md:mb-0 fade-in">
+                    <h1 class="text-4xl md:text-5xl font-bold mb-6">DGLINK, la puissance du numérique entre vos mains</h1>
+                    <p class="text-lg mb-8 text-blue-100">Nous accompagnons votre transformation digitale avec des solutions sur mesure et des formations adaptées à vos besoins.</p>
+                    <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
+                        <a href="#services" class="bg-white text-blue-600 hover:bg-gray-100 px-6 py-3 rounded-lg font-medium text-center transition duration-300">Nos services</a>
+                        <a href="#contact" class="border-2 border-white text-white hover:bg-white hover:text-blue-600 px-6 py-3 rounded-lg font-medium text-center transition duration-300">Contactez-nous</a>
+                    </div>
+                </div>
+                <div class="md:w-1/2 flex justify-center">
+                    <div class="relative w-full max-w-md">
+                        <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2850&q=80" alt="Digital transformation" class="rounded-xl shadow-2xl animate-float">
+                        <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Team working" class="absolute -bottom-10 -right-10 w-40 h-40 rounded-full border-4 border-white shadow-xl animate-float-delay">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">À propos de DGLINK</h2>
+                <div class="w-20 h-1 bg-blue-600 mx-auto"></div>
+            </div>
+            
+            <div class="flex flex-col md:flex-row items-center mb-16">
+                <div class="md:w-1/2 mb-10 md:mb-0">
+                    <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80" alt="DGlink team" class="rounded-lg shadow-xl w-full">
+                </div>
+                <div style="text-align: justify;" class="md:w-1/2 md:pl-12">
+                    <h3 class="text-2xl font-semibold text-gray-900 mb-4">Notre histoire</h3>
+                    <p class="text-gray-600 mb-6">Enrégistré le 8 juillet 2025 à Lokossa, au Bénin, DGlink est née d’une passion profonde pour le numérique et la transformation digitale.</p>
+
+                    <p class="text-gray-600 mb-6">Son fondateur, un passionné de technologie et d’innovation, a voulu créer une entreprise qui permettrait aux particuliers, entreprises et institutions de franchir le cap du digital avec confiance, simplicité et performance. </p>
+                    <p class="text-gray-600 mb-6">Depuis sa création, DGlink n’a cessé d’élargir ses domaines d’intervention : du développement web à l’intégration de solutions de paiement électronique, en passant par l’installation de réseaux informatiques et la digitalisation des processus métiers.</p>
+
+                    <p class="text-gray-600 mb-6">Pour répondre à la demande croissante de compétences numériques, DGlink s’est également engagée dans la formation de qualité en informatique, contribuant à l’émergence d’une nouvelle génération de développeurs et de techniciens au Bénin et en Afrique.</p>
+                    
+                    <h3 class="text-2xl font-semibold text-gray-900 mb-4">Notre mission</h3>
+                    <p class="text-gray-600 mb-6">Chez DGlink, notre mission est de rendre le numérique accessible, performant et utile pour tous.</p>
+
+                    <p class="text-gray-600 mb-6">Nous accompagnons nos clients dans leur transformation digitale en leur offrant des solutions technologiques sur mesure, fiables, sécurisées et adaptées à leurs besoins. </p>
+                    <p class="text-gray-600 mb-6">Nous croyons également que l’avenir de l’Afrique passe par l’éducation numérique. C’est pourquoi nous proposons des formations pratiques en informatique de base, développement web et systèmes de paiement, afin de former des talents capables de bâtir les solutions de demain.</p>
+
+                    <p class="text-gray-600 mb-6"><strong>Innover, accompagner et former,</strong> telles sont les trois pierres angulaires de notre engagement au quotidien.</p>
+                    <div class="bg-blue-50 p-6 rounded-lg border-l-4 border-blue-600">
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0">
+                                <img class="h-12 w-12 rounded-full" src="IMG_20241215_164858_244~2.jpg" alt="Photo du fondateur">
+                            </div>
+                            <div class="ml-4">
+                                <h2 class="text-lg font-medium text-gray-900">Mot du PDG</h2>
+                                <p class="mt-1 text-gray-600">Chez DGlink, nous croyons que le numérique est une force qui transforme des vies. Mon objectif est simple : rendre la technologie utile, accessible et formatrice pour tous. Merci de faire partie de cette vision. </p>
+                                <p class="mt-1 text-gray-600"> <strong> Hotègni Diègue HOUNDOKINNOU - PDG DGlink</strong></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition duration-300">
+                    <div class="text-blue-600 mb-4">
+                        <i class="fas fa-users text-3xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2 text-gray-900">Équipe qualifiée</h3>
+                    <p class="text-gray-600">Nos experts sont sélectionnés pour leurs compétences techniques et leur capacité à comprendre vos besoins.</p>
+                </div>
+                
+                <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition duration-300">
+                    <div class="text-blue-600 mb-4">
+                        <i class="fas fa-lightbulb text-3xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2 text-gray-900">Solutions innovantes</h3>
+                    <p class="text-gray-600">Nous développons des solutions sur mesure qui répondent aux défis spécifiques de votre entreprise.</p>
+                </div>
+                
+                <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition duration-300">
+                    <div class="text-blue-600 mb-4">
+                        <i class="fas fa-headset text-3xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2 text-gray-900">Support continu</h3>
+                    <p class="text-gray-600">Notre engagement ne s'arrête pas à la livraison, nous vous accompagnons tout au long de votre parcours digital.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-16 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">Nos Services</h2>
+                <div class="w-20 h-1 bg-blue-600 mx-auto"></div>
+                <p class="mt-4 text-lg text-gray-600 max-w-3xl mx-auto">Nous offrons une gamme complète de services pour répondre à tous vos besoins numériques.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Service 1 -->
+                <div class="service-card bg-white p-6 rounded-lg shadow-md transition duration-300">
+                    <div class="text-blue-600 mb-4">
+                        <i class="fas fa-code text-4xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2 text-gray-900">Développement Web</h3>
+                    <p class="text-gray-600 mb-4">Sites vitrines, e-commerce et applications web sur mesure pour booster votre présence en ligne.</p>
+                    <a href="#" class="text-blue-600 font-medium hover:text-blue-800 inline-flex items-center">En savoir plus <i class="fas fa-arrow-right ml-2"></i></a>
+                </div>
+                
+                <!-- Service 2 -->
+                <div class="service-card bg-white p-6 rounded-lg shadow-md transition duration-300">
+                    <div class="text-blue-600 mb-4">
+                        <i class="fas fa-credit-card text-4xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2 text-gray-900">Moyens de Paiement Électronique</h3>
+                    <p class="text-gray-600 mb-4">Intégration de passerelles de paiement sécurisées et création de wallets personnalisés.</p>
+                    <a href="#" class="text-blue-600 font-medium hover:text-blue-800 inline-flex items-center">En savoir plus <i class="fas fa-arrow-right ml-2"></i></a>
+                </div>
+                
+                <!-- Service 3 -->
+                <div class="service-card bg-white p-6 rounded-lg shadow-md transition duration-300">
+                    <div class="text-blue-600 mb-4">
+                        <i class="fas fa-network-wired text-4xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2 text-gray-900">Réseau et Systèmes Informatiques</h3>
+                    <p class="text-gray-600 mb-4">Configuration, optimisation et maintenance de vos infrastructures réseau et systèmes.</p>
+                    <a href="#" class="text-blue-600 font-medium hover:text-blue-800 inline-flex items-center">En savoir plus <i class="fas fa-arrow-right ml-2"></i></a>
+                </div>
+                
+                <!-- Service 4 -->
+                <div class="service-card bg-white p-6 rounded-lg shadow-md transition duration-300">
+                    <div class="text-blue-600 mb-4">
+                        <i class="fas fa-file-alt text-4xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2 text-gray-900">Digitalisation</h3>
+                    <p class="text-gray-600 mb-4">Dématérialisation de documents et automatisation de vos processus métiers.</p>
+                    <a href="#" class="text-blue-600 font-medium hover:text-blue-800 inline-flex items-center">En savoir plus <i class="fas fa-arrow-right ml-2"></i></a>
+                </div>
+                
+                <!-- Service 5 -->
+                <div class="service-card bg-white p-6 rounded-lg shadow-md transition duration-300">
+                    <div class="text-blue-600 mb-4">
+                        <i class="fas fa-laptop text-4xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2 text-gray-900">Vente de Matériel Informatique</h3>
+                    <p class="text-gray-600 mb-4">Ordinateurs, accessoires et logiciels de qualité pour équiper votre entreprise.</p>
+                    <a href="#" class="text-blue-600 font-medium hover:text-blue-800 inline-flex items-center">En savoir plus <i class="fas fa-arrow-right ml-2"></i></a>
+                </div>
+                
+                <!-- Service 6 -->
+                <div class="service-card bg-white p-6 rounded-lg shadow-md transition duration-300">
+                    <div class="text-blue-600 mb-4">
+                        <i class="fas fa-hands-helping text-4xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2 text-gray-900">Conseil & Accompagnement</h3>
+                    <p class="text-gray-600 mb-4">Stratégie digitale sur mesure et accompagnement dans votre transformation numérique.</p>
+                    <a href="#" class="text-blue-600 font-medium hover:text-blue-800 inline-flex items-center">En savoir plus <i class="fas fa-arrow-right ml-2"></i></a>
+                </div>
+            </div>
+            
+            <div class="text-center mt-16">
+                <a href="#contact" class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-medium inline-block transition duration-300">Demandez un devis personnalisé</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="py-16 bg-blue-600 text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold mb-4">Ils nous font confiance</h2>
+                <div class="w-20 h-1 bg-white mx-auto"></div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Testimonial 1 -->
+                <div class="testimonial-card bg-blue-700 p-6 rounded-lg">
+                    <div class="flex items-center mb-4">
+                        <div class="flex items-center space-x-4 p-4 bg-white rounded-lg shadow-md max-w-md">
+                            <img src="https://moov-africa.bj/wp-content/uploads/2021/06/logo-moov.png" alt="Logo Moov Africa" class="w-16 h-16 object-contain">
+                        </div>
+                        <div class="ml-4">
+                            <h3 class="font-medium">MOOV AFRICA</h3>
+                            <p class="text-blue-200 text-sm"></p>
+                        </div>
+                    </div>
+                    <p class="text-blue-100">DGLINK œuvre pour la création des moyens de paiement en ligne avec un site e-commerce performant. Leur équipe est réactive et professionnelle.</p>
+                    <div class="mt-4 text-yellow-400">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                </div>
+                
+                <!-- Testimonial 2 -->
+                <div class="testimonial-card bg-blue-700 p-6 rounded-lg">
+                    <div class="flex items-center mb-4">
+                        <img src="https://www.w3schools.com/howto/img_avatar.png" alt="Avatar par défaut" class="w-16 h-16 rounded-full">
+                        <div class="ml-4">
+                            <h4 class="font-medium">Jean M.</h4>
+                            <p class="text-blue-200 text-sm">Entrepreneur</p>
+                        </div>
+                    </div>
+                    <p class="text-blue-100">La solution de paiement électronique intégrée par DGLINK simplifie nos transactions et augmente nos ventes.</p>
+                    <div class="mt-4 text-yellow-400">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                </div>
+                
+                <!-- Testimonial 3 -->
+                <div class="testimonial-card bg-blue-700 p-6 rounded-lg">
+                    <div class="flex items-center mb-4">
+                        <img class="h-12 w-12 rounded-full" src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=100&q=80" alt="Client">
+                        <div class="ml-4">
+                            <h4 class="font-medium">Amadou D.</h4>
+                            <p class="text-blue-200 text-sm">Directeur IT</p>
+                        </div>
+                    </div>
+                    <p class="text-blue-100">Leur expertise en réseaux a résolu nos problèmes de connectivité et amélioré la productivité de toute l'entreprise.</p>
+                    <div class="mt-4 text-yellow-400">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Formations Section -->
+    <section id="formations" class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">Nos Formations</h2>
+                <div class="w-20 h-1 bg-blue-600 mx-auto"></div>
+                <p class="mt-4 text-lg text-gray-600 max-w-3xl mx-auto">Développez vos compétences numériques avec nos formations professionnelles.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Formation 1 -->
+                <div class="bg-gray-50 rounded-lg overflow-hidden shadow-md hover:shadow-lg transition duration-300">
+                    <div class="h-48 bg-blue-600 flex items-center justify-center">
+                        <i class="fas fa-laptop-code text-white text-6xl"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-gray-900 mb-2">Développement Web</h3>
+                        <p class="text-gray-600 mb-4">Maîtrisez HTML, CSS, JavaScript et PHP pour créer des sites web dynamiques.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-blue-600 font-medium">10 semaines</span>
+                            <span class="font-bold text-gray-900">50.000 FCFA</span>
+                        </div>
+                        <a href="#" class="block mt-4 text-center bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md text-sm font-medium transition duration-300">S'inscrire</a>
+                    </div>
+                </div>
+                
+                <!-- Formation 2 -->
+                <div class="bg-gray-50 rounded-lg overflow-hidden shadow-md hover:shadow-lg transition duration-300">
+                    <div class="h-48 bg-blue-600 flex items-center justify-center">
+                        <i class="fas fa-money-check-alt text-white text-6xl"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-gray-900 mb-2">Paiement Électronique</h3>
+                        <p class="text-gray-600 mb-4">Apprenez à créer et intégrer des systèmes de paiement sécurisés.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-blue-600 font-medium">6 semaines</span>
+                            <span class="font-bold text-gray-900">20.000 FCFA</span>
+                        </div>
+                        <a href="#" class="block mt-4 text-center bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md text-sm font-medium transition duration-300">S'inscrire</a>
+                    </div>
+                </div>
+                
+                <!-- Formation 3 -->
+                <div class="bg-gray-50 rounded-lg overflow-hidden shadow-md hover:shadow-lg transition duration-300">
+                    <div class="h-48 bg-blue-600 flex items-center justify-center">
+                        <i class="fas fa-network-wired text-white text-6xl"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-gray-900 mb-2">Réseaux & Systèmes</h3>
+                        <p class="text-gray-600 mb-4">Configuration et maintenance des infrastructures réseau d'entreprise.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-blue-600 font-medium">12 semaines</span>
+                            <span class="font-bold text-gray-900">10.000 FCFA</span>
+                        </div>
+                        <a href="#" class="block mt-4 text-center bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md text-sm font-medium transition duration-300">S'inscrire</a>
+                    </div>
+                </div>
+                
+                <!-- Formation 4 -->
+                <div class="bg-gray-50 rounded-lg overflow-hidden shadow-md hover:shadow-lg transition duration-300">
+                    <div class="h-48 bg-blue-600 flex items-center justify-center">
+                        <i class="fas fa-desktop text-white text-6xl"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-gray-900 mb-2">Informatique de Base</h3>
+                        <p class="text-gray-600 mb-4">Les fondamentaux pour maîtriser l'outil informatique au quotidien.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-blue-600 font-medium">4 semaines</span>
+                            <span class="font-bold text-gray-900">10.000 FCFA</span>
+                        </div>
+                        <a href="#" class="block mt-4 text-center bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md text-sm font-medium transition duration-300">S'inscrire</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-16">
+                <a href="#contact" class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-medium inline-block transition duration-300">Demandez le programme complet</a>
+            </div>
+        </div>
+
+        <div id="inscription-message">
+            🚫 Les inscriptions sont momentanément fermées.<br><br>
+            📞 Contactez-nous directement sur <a href="https://wa.me/22994119476" target="_blank">WhatsApp</a>.
+        </div>
+    </section>
+
+    <!-- Boutique Section -->
+    <section id="boutique" class="py-16 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">Notre Boutique</h2>
+                <div class="w-20 h-1 bg-blue-600 mx-auto"></div>
+                <p class="mt-4 text-lg text-gray-600 max-w-3xl mx-auto">Découvrez notre sélection de matériel informatique de qualité.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Produit 1 -->
+                <div class="product-card bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition duration-300 relative">
+                    <div class="h-48 bg-gray-100 flex items-center justify-center p-4">
+                        <img src="https://images.unsplash.com/photo-1593642632823-8f785ba67e45?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Laptop" class="max-h-full max-w-full">
+                    </div>
+                    <div class="p-4">
+                        <h3 class="text-lg font-semibold text-gray-900 mb-2">Ordinateur Portable Elite</h3>
+                        <p class="text-gray-600 text-sm mb-4">Processeur i7, 16GB RAM, SSD 512GB, écran 15.6" Full HD</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-blue-600 font-bold">A partir de 50.000 FCFA</span>
+                            <span class="text-sm text-gray-500">En stock</span>
+                        </div>
+                    </div>
+                    <div class="product-overlay absolute inset-0 bg-black bg-opacity-70 opacity-0 flex items-center justify-center">
+                        <a href="https://wa.me/22994119476?text=Bonjour%2C%20je%20souhaite%20commander%20l'Imprimante%20Laser%20Pro%20vue%20sur%20votre%20site." target="_blank" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md font-medium">
+                            Ajouter au panier
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Produit 2 -->
+                <div class="product-card bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition duration-300 relative">
+                    <div class="h-48 bg-gray-100 flex items-center justify-center p-4">
+                        <img src="https://images.unsplash.com/photo-1546054454-aa26e2b734c7?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Smartphone" class="max-h-full max-w-full">
+                    </div>
+                    <div class="p-4">
+                        <h3 class="text-lg font-semibold text-gray-900 mb-2">Smartphone Pro X</h3>
+                        <p class="text-gray-600 text-sm mb-4">Écran 6.5", 128GB, double caméra 48MP, batterie 4000mAh</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-blue-600 font-bold">A partir de 30.000 FCFA</span>
+                            <span class="text-sm text-gray-500">En stock</span>
+                        </div>
+                    </div>
+                    <div class="product-overlay absolute inset-0 bg-black bg-opacity-70 opacity-0 flex items-center justify-center">
+                        <a href="https://wa.me/22994119476?text=Bonjour%2C%20je%20souhaite%20commander%20l'Imprimante%20Laser%20Pro%20vue%20sur%20votre%20site." target="_blank" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md font-medium">
+                            Ajouter au panier
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Produit 3 -->
+                <div class="product-card bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition duration-300 relative">
+                    <div class="h-48 bg-gray-100 flex items-center justify-center p-4">
+                        <img src="https://images.unsplash.com/photo-1556740738-b6a63e27c4df?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Printer" class="max-h-full max-w-full">
+                    </div>
+                    <div class="p-4">
+                        <h3 class="text-lg font-semibold text-gray-900 mb-2">Imprimante Laser Pro</h3>
+                        <p class="text-gray-600 text-sm mb-4">Impression recto-verso, WiFi, jusqu'à 30ppm, résolution 1200x1200dpi</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-blue-600 font-bold">A partir de 30.000 FCFA</span>
+                            <span class="text-sm text-gray-500">En stock</span>
+                        </div>
+                    </div>
+                    <div class="product-overlay absolute inset-0 bg-black bg-opacity-70 opacity-0 flex items-center justify-center">
+                        <a href="https://wa.me/22994119476?text=Bonjour%2C%20je%20souhaite%20commander%20l'Imprimante%20Laser%20Pro%20vue%20sur%20votre%20site." target="_blank" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md font-medium">
+                            Ajouter au panier
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Produit 4 -->
+                <div class="product-card bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition duration-300 relative">
+                    <div class="h-48 bg-gray-100 flex items-center justify-center p-4">
+                        <img src="https://images.unsplash.com/photo-1591488320449-011701bb6704?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Accessories" class="max-h-full max-w-full">
+                    </div>
+                    <div class="p-4">
+                        <h3 class="text-lg font-semibold text-gray-900 mb-2">Kit Accessoires</h3>
+                        <p class="text-gray-600 text-sm mb-4">Souris sans fil, clavier, casque audio et tapis de souris</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-blue-600 font-bold">A bon prix</span>
+                            <span class="text-sm text-gray-500">En stock</span>
+                        </div>
+                    </div>
+                    <div class="product-overlay absolute inset-0 bg-black bg-opacity-70 opacity-0 flex items-center justify-center">
+                        <a href="https://wa.me/22994119476?text=Bonjour%2C%20je%20souhaite%20commander%20l'Imprimante%20Laser%20Pro%20vue%20sur%20votre%20site." target="_blank" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md font-medium">
+                            Ajouter au panier
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-16">
+                <a href="https://wa.me/22994119476?text=Bonjour%2C%20je%20souhaite%20commander%20l'Imprimante%20Laser%20Pro%20vue%20sur%20votre%20site." class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-medium inline-block transition duration-300">Voir tous les produits</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">Contactez-nous</h2>
+                <div class="w-20 h-1 bg-blue-600 mx-auto"></div>
+                <p class="mt-4 text-lg text-gray-600 max-w-3xl mx-auto">Nous sommes à votre écoute pour répondre à toutes vos questions.</p>
+            </div>
+            
+            <div class="flex flex-col md:flex-row">
+                <div class="md:w-1/2 mb-10 md:mb-0 md:pr-8">
+                    <h3 class="text-xl font-semibold text-gray-900 mb-6">Nos coordonnées</h3>
+                    
+                    <div class="space-y-6">
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 h-6 w-6 text-blue-600">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div class="ml-3 text-base text-gray-600">
+                                <p>Lokossa, Bénin BP 133</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 h-6 w-6 text-blue-600">
+                                <i class="fas fa-phone-alt"></i>
+                            </div>
+                            <div class="ml-3 text-base text-gray-600">
+                                <p><a href="tel:+22994119476" style="color: #000; text-decoration: none;">(+229) 01 94 11 94 76</a> ou <a href="tel:+229XXXXXXXX" style="color: #000; text-decoration: none;">(+229) 01 94 11 94 76</a></p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 h-6 w-6 text-blue-600">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div class="ml-3 text-base text-gray-600">
+                                <p><a href="mailto:dglink25@gmail.com">dglink25@gmail.com</a></p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 h-6 w-6 text-blue-600">
+                                <i class="fab fa-whatsapp"></i>
+                            </div>
+                            <div class="ml-3 text-base text-gray-600">
+                                <p><strong>WhatsApp :</strong></p>
+                                <a href="https://wa.me/2290194119476" target="_blank" style="color: #25D366; text-decoration: none;">Discuter sur WhatsApp</a>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 h-6 w-6 text-blue-600">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <div class="ml-3 text-base text-gray-600">
+                                <p>7 Jours/7</p>
+                                <p>24h/24</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h3 class="text-xl font-semibold text-gray-900 mt-10 mb-6">Suivez-nous</h3>
+                    <div class="flex space-x-4">
+                        <a href="https://www.facebook.com/don.diegue.776080" class="h-10 w-10 rounded-full bg-blue-600 text-white flex items-center justify-center hover:bg-blue-700 transition duration-300">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="https://www.instagram.com/dglink27?igsh=YzljYTk1ODg3Zg==" class="h-10 w-10 rounded-full bg-pink-600 text-white flex items-center justify-center hover:bg-pink-700 transition duration-300">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="https://www.linkedin.com/in/dglink-dglink-2bb5b2375?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" class="h-10 w-10 rounded-full bg-blue-700 text-white flex items-center justify-center hover:bg-blue-800 transition duration-300">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                    </div>
+                    
+                    <div class="mt-10 h-64 bg-gray-200 rounded-lg overflow-hidden">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3961.123456789012!2d2.1234567890123456!3d6.789012345678901!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNsKwNDcnMjAuNCJOIDLCsDA3JzIxLjgiRQ!5e0!3m2!1sfr!2sbj!4v1621234567890!5m2!1sfr!2sbj" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                    </div>
+                </div>
+                
+                <div class="md:w-1/2 md:pl-8">
+                    <form action="" class="space-y-6" method="POST">
+                        <div>
+                            <label for="name" class="block text-sm font-medium text-gray-700">Nom complet</label>
+                            <input type="text" id="name" name="name" required class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+                        </div>
+                        
+                        <div>
+                            <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
+                            <input type="email" id="email" name="email" required class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+                        </div>
+                        
+                        <div>
+                            <label for="phone" class="block text-sm font-medium text-gray-700">Téléphone</label>
+                            <input type="tel" id="phone" name="phone" required class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+                        </div>
+                        
+                        <div>
+                            <label for="subject" class="block text-sm font-medium text-gray-700">Sujet</label>
+                            <select id="subject" name="subject" required class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+                                <option>Sélectionnez un sujet</option>
+                                <option>Demande de devis</option>
+                                <option>Information sur les services</option>
+                                <option>Inscription à une formation</option>
+                                <option>Commande de matériel</option>
+                                <option>Autre</option>
+                            </select>
+                        </div>
+                        
+                        <div>
+                            <label for="message" class="block text-sm font-medium text-gray-700">Message</label>
+                            <textarea id="message" required name="message" rows="4" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-blue-500 focus:border-blue-500"></textarea>
+                        </div>
+                        
+                        <div>
+                            <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded-md font-medium transition duration-300">Envoyer le message</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white pt-16 pb-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <div class="flex items-center mb-4">
+                        <img src="logo1.png" alt="DGlink Logo" class="h-10 w-10">
+                        <span class="ml-3 text-xl font-semibold">DGLINK</span>
+                    </div>
+                    <p class="text-gray-400">La puissance du numérique entre vos mains. Nous accompagnons votre transformation digitale avec des solutions sur mesure.</p>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Liens rapides</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#home" class="text-gray-400 hover:text-white transition duration-300">Accueil</a></li>
+                        <li><a href="#about" class="text-gray-400 hover:text-white transition duration-300">À propos</a></li>
+                        <li><a href="#services" class="text-gray-400 hover:text-white transition duration-300">Services</a></li>
+                        <li><a href="#formations" class="text-gray-400 hover:text-white transition duration-300">Formations</a></li>
+                        <li><a href="#boutique" class="text-gray-400 hover:text-white transition duration-300">Boutique</a></li>
+                        <li><a href="#contact" class="text-gray-400 hover:text-white transition duration-300">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Services</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-300">Développement Web</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-300">Paiement Électronique</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-300">Réseaux & Systèmes</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-300">Digitalisation</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-300">Vente de Matériel</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-300">Conseil Digital</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Newsletter</h3>
+                    <p class="text-gray-400 mb-4">Abonnez-vous pour recevoir nos dernières actualités et offres.</p>
+                    <form class="flex" action="https://www.instagram.com/dglink27?igsh=YzljYTk1ODg3Zg==">
+                        <input type="email" placeholder="Votre email" class="px-4 py-2 w-full rounded-l-md focus:outline-none text-gray-900">
+                        <button type="submit" class="bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded-r-md transition duration-300">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </form>
+                    <div class="flex space-x-4 mt-6">
+                        <a href="https://www.facebook.com/don.diegue.776080" class="h-10 w-10 rounded-full bg-blue-600 text-white flex items-center justify-center hover:bg-blue-700 transition duration-300">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="https://www.instagram.com/dglink27?igsh=YzljYTk1ODg3Zg==" class="h-10 w-10 rounded-full bg-pink-600 text-white flex items-center justify-center hover:bg-pink-700 transition duration-300">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="https://www.linkedin.com/in/dglink-dglink-2bb5b2375?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" class="h-10 w-10 rounded-full bg-blue-700 text-white flex items-center justify-center hover:bg-blue-800 transition duration-300">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="#" class="h-10 w-10 rounded-full bg-gray-800 text-white flex items-center justify-center hover:bg-blue-400 transition duration-300">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-400 text-sm">© 2025 DGLINK. Tous droits réservés.</p>
+                <div class="flex space-x-6 mt-4 md:mt-0">
+                    <a href="mentions-legales.html" class="text-gray-400 hover:text-white text-sm transition duration-300">Mentions légales</a>
+                    <a href="#" class="text-gray-400 hover:text-white text-sm transition duration-300">Politique de confidentialité</a>
+                    <a href="conditions-generales.html" class="text-gray-400 hover:text-white text-sm transition duration-300">Conditions générales</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        document.getElementById('mobile-menu-button').addEventListener('click', function() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    // Close mobile menu if open
+                    const mobileMenu = document.getElementById('mobile-menu');
+                    if (!mobileMenu.classList.contains('hidden')) {
+                        mobileMenu.classList.add('hidden');
+                    }
+                    
+                    // Calculate position to scroll to
+                    const elementPosition = targetElement.getBoundingClientRect().top;
+                    const offsetPosition = elementPosition + window.pageYOffset - 80; // Adjust for fixed header
+                    
+                    // Smooth scroll
+                    window.scrollTo({
+                        top: offsetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Scroll animation for elements
+        function animateOnScroll() {
+            const elements = document.querySelectorAll('.fade-in, .service-card, .testimonial-card');
+            
+            elements.forEach(element => {
+                const elementPosition = element.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+                
+                if (elementPosition < windowHeight - 100) {
+                    element.style.opacity = '1';
+                    element.style.transform = 'translateY(0)';
+                }
+            });
+        }
+
+        // Set initial state for animated elements
+        document.querySelectorAll('.fade-in, .service-card, .testimonial-card').forEach(element => {
+            element.style.opacity = '0';
+            element.style.transform = 'translateY(20px)';
+            element.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+        });
+
+        // Run animation on load and scroll
+        window.addEventListener('load', animateOnScroll);
+        window.addEventListener('scroll', animateOnScroll);
+
+        // Navbar background change on scroll
+        window.addEventListener('scroll', function() {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 50) {
+                nav.classList.add('shadow-lg');
+                nav.classList.add('bg-white');
+                nav.classList.remove('bg-transparent');
+            } else {
+                nav.classList.remove('shadow-lg');
+                nav.classList.add('bg-white');
+            }
+        });
+
+        // Navbar background change on scroll
+        window.addEventListener('scroll', function() {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 50) {
+                nav.classList.add('shadow-lg');
+                nav.classList.add('bg-white');
+                nav.classList.remove('bg-transparent');
+            } else {
+                nav.classList.remove('shadow-lg');
+                nav.classList.add('bg-white');
+            }
+        });
+
+        // Formation signup click handler
+
+        document.querySelectorAll('a[href="#"]').forEach(link => {
+        if (link.textContent.includes("S'inscrire")) {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const msg = document.getElementById('inscription-message');
+                msg.style.display = 'block';
+                // Optionnel : cacher le message après 8 secondes
+                setTimeout(() => {
+                    msg.style.display = 'none';
+                }, 8000);
+            });
+        }
+    });
+
+ 
+
+    </script>
+</body>
+</html>
